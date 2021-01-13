@@ -1,7 +1,5 @@
 FROM php:7.3-fpm
 
-LABEL maintainer="ENGY <devops@debyum.com>"
-
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -33,13 +31,7 @@ ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Add user for laravel application
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
-
-# Change current user to www
-USER www
-
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
+
 CMD ["php-fpm"]
