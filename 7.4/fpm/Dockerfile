@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libzip-dev \
     libpq-dev \
+    libonig-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     locales \
