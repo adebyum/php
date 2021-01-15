@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libpq-dev \
     libonig-dev \
+    libxslt1-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     locales \
@@ -19,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring zip exif pcntl
+RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring zip exif pcntl gettext shmop sockets sysvsem sysvshm sysvmsg xsl opcache
 RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install gd
 RUN pecl install -o -f redis \
